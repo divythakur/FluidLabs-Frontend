@@ -18,10 +18,10 @@ export const isValidEmail = (email) => {
   return VALID_EMAIL_REGEX.test(email);
 };
 export default function SignUp() {
-  const [userObj, setUserObj] = React.useState(null);
+  const [userObj, setUserObj] = React.useState({});
   const navigate = useNavigate();
-  const [error, setError] = useState({});
-  const [helperText,setHelpertext] =useState({})
+  const [error, setError] = useState({email:true,password:true});
+  const [helperText, setHelpertext] = useState({});
 
   const handleChange = (e) => {
     checkForErrors(e);
@@ -29,7 +29,7 @@ export default function SignUp() {
   };
 
   const handleSubmit = async (e) => {
-    const URL = `${process.env.REACT_APP_BASE_URL}/register`
+    const URL = `${process.env.REACT_APP_BASE_URL}/register`;
     e.preventDefault();
     await fetch(URL, {
       method: "POST",
@@ -41,14 +41,14 @@ export default function SignUp() {
     })
       .then((data) => data.json())
       .then((data) => {
-         if (data.body == "success") {
+        if (data.body == "success") {
           enqueueSnackbar("User registration is successful");
           enqueueSnackbar("Please login with your email ");
           setTimeout(() => {
             navigate("../login", { replace: true });
           }, 2000);
         } else {
-           if (data.body === "alreadyExist") {
+          if (data.body === "alreadyExist") {
             enqueueSnackbar("User with this email already Exists !!");
           } else {
             enqueueSnackbar("please provide all the required Info");
@@ -66,45 +66,40 @@ export default function SignUp() {
         if (!validEmail) {
           flag = 1;
           setError((prev) => ({ ...prev, email: true }));
-          setHelpertext((prev)=>({...prev,email:"Give Valid email"}))
+          setHelpertext((prev) => ({ ...prev, email: "Give Valid email" }));
         } else {
           const newState = error;
-          const clonedtext= helperText;
+          const clonedtext = helperText;
           if (newState?.email) {
             delete newState.email;
             delete clonedtext.email;
           }
           setError(newState);
-          setHelpertext(clonedtext)
+          setHelpertext(clonedtext);
         }
         break;
       }
       case "password": {
         if (e.target.value.length < 5) {
           flag = 1;
-          setHelpertext((prev)=>({...prev,password:"Min length - 5"}))
+          setHelpertext((prev) => ({ ...prev, password: "Min length - 5" }));
 
           setError((prev) => ({ ...prev, password: true }));
           break;
         } else {
           const newState = error;
-          const clonedtext= helperText;
+          const clonedtext = helperText;
 
           if (newState?.password) {
             delete newState.password;
             delete clonedtext.password;
-
           }
           setError(newState);
-          setHelpertext(clonedtext)
-
+          setHelpertext(clonedtext);
         }
       }
     }
-     
   };
-
- 
 
   return (
     <Container component="main" maxWidth="xs">
@@ -148,14 +143,13 @@ export default function SignUp() {
             <Grid item xs={12}>
               <TextField
                 required
-                error={error?.email}
+                error={userObj.email!=undefined && error?.email}
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
                 onChange={handleChange}
-                helperText={helperText.email  ?? ""}
-
+                helperText={helperText.email ?? ""}
                 autoComplete="email"
               />
             </Grid>
@@ -163,9 +157,8 @@ export default function SignUp() {
               <TextField
                 required
                 fullWidth
-                error={error?.password}
-                helperText={helperText.password  ?? ""}
-
+                error={userObj.password!= undefined && error?.password}
+                helperText={helperText.password ?? ""}
                 name="password"
                 label="Password"
                 type="password"
@@ -176,14 +169,11 @@ export default function SignUp() {
             </Grid>
           </Grid>
           <Button
-            
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
             onClick={handleSubmit}
-            disabled={ ( Object.keys(error).length ) 
-            || userObj === null  }
-
+            disabled={Object.keys(error).length || userObj === null}
           >
             Sign Up
           </Button>
