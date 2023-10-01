@@ -37,9 +37,9 @@ const TableWrapper = () => {
       enqueueSnackbar("You are not having valid permissions");
       enqueueSnackbar("Redirecting back to login page");
       setLoading(false);
-    //   setTimeout(() => {
-    //     navigate("../login", { replace: true });
-    //   }, 3000);
+      setTimeout(() => {
+        navigate("../login", { replace: true });
+      }, 3000);
     }
   };
 
