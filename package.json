@@ -14,7 +14,8 @@
       "react-dom": "^18.2.0",
       "react-router-dom": "^6.16.0",
       "react-scripts": "5.0.1",
-      "web-vitals": "^2.1.4"
+      "web-vitals": "^2.1.4",
+      "@svgr/webpack":"^6.2.1"
     },
     "scripts": {
       "start": "react-scripts start",
@@ -39,6 +40,13 @@
         "last 1 firefox version",
         "last 1 safari version"
       ]
+    },
+    "overrides": {
+      "react-scripts": "5.0.1",
+      "@svgr/webpack":"$@svgr/webpack",
+
+      
+      "typescript": "4.9.5"
     }
   }
   

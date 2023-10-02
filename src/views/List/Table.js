@@ -36,10 +36,8 @@ export default function ListTable({ rows, fetchData, loading, error }) {
     if (e.target.value.trim() == "") {
       fetchData(10, 0);
     } else {
-      console.log({ selectedFilter });
-      const fetchParams = `&${selectedFilter}=${e.target.value}`;
-      console.log({ fetchParams });
-      setPage(0);
+       const fetchParams = `&${selectedFilter}=${e.target.value}`;
+       setPage(0);
       setRowsPerPage(10);
 
       fetchData(10, 0, fetchParams);
