@@ -53,7 +53,7 @@ export default function MediaCard() {
               Buy
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Get Exciting feals, cashbacks on completing payment{" "}
+              Get Exciting deals, cashbacks on completing payment{" "}
             </Typography>
             <div
               style={{

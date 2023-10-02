@@ -19,7 +19,7 @@ import "./table.css";
 export default function ListTable({ rows, fetchData, loading, error }) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [selectedFilter, setSelectedFilter] = useState(null);
+  const [selectedFilter, setSelectedFilter] = useState("name");
   const [searchText,setSearchText] =useState(null)
 
   const handleChangePage = (event, newPage) => {
