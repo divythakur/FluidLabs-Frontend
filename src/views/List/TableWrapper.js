@@ -16,8 +16,7 @@ const TableWrapper = () => {
    
     if (fetchParams) {
       URL += fetchParams;
-      console.log({URL,fetchParams})
-    }
+     }
     setLoading(true);
     const jwtToken = window.sessionStorage.getItem("token");
     const result = await fetch(URL, {

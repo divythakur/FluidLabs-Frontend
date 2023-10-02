@@ -28,8 +28,8 @@ export default function MediaCard() {
       },
       body: JSON.stringify(param),
     });
-    const body = await res.json();
-    window.location.href = body.url;
+     const body = await res.json();
+  window.location.href = body.url;
   };
   return (
     <>
