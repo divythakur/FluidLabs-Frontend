@@ -12,19 +12,18 @@ import Container from "@mui/material/Container";
 import { enqueueSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 
-
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function SignIn() {
   const [userObj, setUserObj] = React.useState(null);
-  const navigate =useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUserObj((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = () => {
-       const URL = `${process.env.REACT_APP_BASE_URL}/login`
+    const URL = `${process.env.REACT_APP_BASE_URL}/login`;
 
     fetch(URL, {
       method: "POST",
@@ -38,15 +37,21 @@ export default function SignIn() {
         return res.json();
       })
       .then((data) => {
-         if(data.body.jwtToken)
-        {
-          window.sessionStorage.setItem("token",data.body.jwtToken)
-          enqueueSnackbar("Login successfull")
-          navigate('../listitems',{replace:true})
-        }
-        else{
-          enqueueSnackbar("Session Timed Out");
-          navigate('../signup')
+        if (data.body.jwtToken) {
+          window.sessionStorage.setItem("token", data.body.jwtToken);
+          enqueueSnackbar("Login successfull");
+          navigate("../listitems", { replace: true });
+        } else {
+          if(data.body === "norecord")
+          {
+            enqueueSnackbar("We dont have any such record, Please register yourselff")
+            navigate("../signup");
+
+          }
+         else if (data.body === "incorrectpassword") {
+            enqueueSnackbar("UserEmail and password do not match")
+          } else enqueueSnackbar("Session Timed Out");
+          // navigate("../signup");
         }
       });
   };

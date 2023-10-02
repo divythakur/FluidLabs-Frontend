@@ -1,51 +1,102 @@
-import { Button } from "@mui/material";
-import React from "react";
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { TextField } from "@mui/material";
+import NavBar from "../../components/Navbar";
 
-// const PaymentView = () => {
+export default function MediaCard() {
+  const [qty, setQty] = React.useState(1);
 
-//     const fetchData = async (limit = 10, offset = 0) => {
-//         setLoading(true);
-//         const jwtToken = window.sessionStorage.getItem("token")
-//         const result = await fetch(
-//           `http://localhost:8000/listItems?limit=${limit}&offset=${offset}`,
-//           {
-//             method: "GET",
-//             headers: {
-//               "Content-Type": "application/json",
-//               Authorization:`Bearer ${jwtToken}`
-    
-//             },
-//           }
-//         );
-//         if (result.status === 200 || result.status ===201) {
-//           const tableData = await result.json();
-//            setLoading(false);
-//           setData(tableData);
-//           setError(null);
-//         } else {
-//           setError(true);
-//           enqueueSnackbar("You are not having valid permissions");
-//           setLoading(false);
-//         }
-//       };
-//   return (
-//     <>
-//     <h1>HELLO</h1>
-//     <form action="payment" method="POST">
+  const URL = `${process.env.REACT_APP_BASE_URL}/make-payment`;
 
-//       <Button
-//         src="//checkout.stripe.com/v2/checkout.js"
-//         className="stripe-button"
-//         data-key="<%= key %>"
-//         data-amount="2500"
-//         data-currency="inr"
-//         data-name="Crafty Gourav"
-//         data-description="Handmade Art and Craft Products"
-//         data-locale="auto"
-//       >BUTTON</Button>
-//     </form>
-//     </>
-//   );
-// };
+  const handlePayment = async () => {
+      const jwtToken = window.sessionStorage.getItem("token");
+    const param = {
+      qty: qty,
+    };
 
- 
+    const res = await fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+         Authorization: `Bearer ${jwtToken}`,
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(param),
+    });
+    const body = await res.json();
+    window.location.href = body.url;
+  };
+  return (
+    <>
+      <NavBar path="/payment" />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <Card sx={{ maxWidth: 345 }}>
+          <CardMedia
+            sx={{ height: 140 }}
+            image="../public/ice-cream-1544475_1280.png"
+            title="green iguana"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              Buy
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Get Exciting feals, cashbacks on completing payment{" "}
+            </Typography>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "centerx",
+                flexDirection: "column",
+              }}
+            >
+              <Typography
+                style={{
+                  textAlign: "center",
+                  color: "crimson",
+                  fontSize: "21px",
+                }}
+              >
+                Amount - 2000 INR
+              </Typography>
+
+              <TextField
+                type="number"
+                min="1"
+                max="5"
+                InputProps={{ inputProps: { min: 1, max: 10 } }}
+                value={qty}
+                onChange={(e) => {
+                  setQty(e.target.value);
+                }}
+                style={{ width: "39%", alignSelf: "center" }}
+              />
+            </div>
+          </CardContent>
+          <CardActions style={{ justifyContent: "center" }}>
+            <Button
+              size="small"
+              variant="contained"
+              style={{ alignSelf: "center", width: "54%" }}
+              onClick={handlePayment}
+            >
+              Make Payment
+            </Button>
+          </CardActions>
+        </Card>
+      </div>
+    </>
+  );
+}
