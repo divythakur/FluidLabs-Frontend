@@ -155,7 +155,7 @@ export default function DoctorDetailsForm() {
               <LockOutlinedIcon />
               
             </Avatar>
-            <img src = "health.svg" alt="logo.svg"  className={classes.logo}/>
+            <img src = "health.png" alt="logo.svg"  className={classes.logo}/>
             <Typography component="h1" variant="h5">
               Sign Up
             </Typography>
@@ -271,7 +271,7 @@ const useStyles = makeStyles({
       background: "darkorchid !important",
     },
     logo:{
-      height:'5vh',
+      height:'10vh',
       width:"12%"
     }
   });

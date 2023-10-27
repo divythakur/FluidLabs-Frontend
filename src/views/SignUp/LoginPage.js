@@ -71,7 +71,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <img src = "health.svg" alt="My Happy SVG"  className={classes.logo}/>
+        <img src = "health.png" alt="My Happy SVG"  className={classes.logo}/>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
