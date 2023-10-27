@@ -41,7 +41,7 @@ export default function DoctorDetailsForm() {
   };
 
   const handleSubmit = async (e) => {
-    const URL = `${process.env.REACT_APP_BASE_URL}/register`;
+    const URL = `${process.env.REACT_APP_BASE_URL}/auth/github`;
     e.preventDefault();
     await fetch(URL, {
       method: "POST",
@@ -57,7 +57,7 @@ export default function DoctorDetailsForm() {
           enqueueSnackbar("User registration is successful");
           enqueueSnackbar("Please login with your email ");
           setTimeout(() => {
-            navigate("../onboarding", { replace: true });
+            navigate("../login", { replace: true });
           }, 2000);
         } else {
           if (data.body === "alreadyExist") {
@@ -140,7 +140,7 @@ export default function DoctorDetailsForm() {
             backgroundPosition: "center",
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square style={{background:"bottom"}}>
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,

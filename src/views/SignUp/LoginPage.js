@@ -11,13 +11,15 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { enqueueSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
+import { makeStyles } from '@mui/styles';
+
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function SignIn() {
   const [userObj, setUserObj] = React.useState(null);
   const navigate = useNavigate();
-
+ const classes = useStyles()
   const handleChange = (e) => {
     setUserObj((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -56,11 +58,11 @@ export default function SignIn() {
       });
   };
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
+    <Container component="main" maxWidth="xs" style={{paddingTop:"12%"}}>
+      {/* <CssBaseline /> */}
       <Box
         sx={{
-          marginTop: 8,
+        //  marginTop: 8,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -69,6 +71,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
+        <img src = "health.svg" alt="My Happy SVG"  className={classes.logo}/>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
@@ -92,10 +95,7 @@ export default function SignIn() {
             onChange={handleChange}
             autoComplete="current-password"
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+         
           <Button
             fullWidth
             variant="contained"
@@ -116,3 +116,13 @@ export default function SignIn() {
     </Container>
   );
 }
+
+const useStyles = makeStyles({
+  button: {
+    background: "darkorchid !important",
+  },
+  logo:{
+    height:'9vh',
+    width:"20%"
+  }
+});

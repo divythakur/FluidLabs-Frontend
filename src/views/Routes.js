@@ -8,13 +8,16 @@ import TableWrapper from "./List/TableWrapper";
 import PaymentView from "./payment/payment";
 import PaymentSuccess from "./payment/paymentSuccess";
 import Error from "./payment/PaymentFailure";
+import ExpiresSession from "./ExpiresSession";
+import PageNotFound from "./PageNotFound";
+import DoctorDetailsForm from "./doctor/DoctorDetailsForm";
+import Specialization from "./patient/diseaseCategory";
+import Onboarding from "./SignUp/Onboarding";
+import AppointmentRequest from "./doctor/AppointmentRequest";
+import ListOfDoctors from "./patient/ListOfDoctors";
+import MyAppointments from "./patient/MyAppoitments";
 
 const Paths = [
-  {
-    path: "/",
-    component: SignUp,
-    exact: true,
-  },
   {
     path: "/signup",
     component: SignUp,
@@ -44,6 +47,44 @@ const Paths = [
   {
     path: "/paymentfailure",
     component: Error,
+    exact: true,
+  },
+  {
+    path: "/expiredsession",
+    component: ExpiresSession,
+    exact: true,
+  },
+  {
+    path: "/doctorform",
+    component: DoctorDetailsForm,
+    exact: true,
+  },
+  {
+    path: "/specialization",
+    component: Specialization,
+    exact: true,
+  },
+  {
+    path: "/onboarding",
+    component: Onboarding,
+    exact: true,
+  },
+  {
+    path: "/appointmentrequests",
+    component: AppointmentRequest,
+  },
+  {
+    path: "/doctorslist",
+    component: ListOfDoctors,
+  },
+  {
+    path: "/myappointments",
+    component: MyAppointments,
+  },
+
+  {
+    path: "*",
+    component: PageNotFound,
     exact: true,
   },
 ];

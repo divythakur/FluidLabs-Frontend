@@ -11,13 +11,16 @@ export default function NavBar({path = "/"}) {
     const navigate = useNavigate()
  
     const handleLogout=()=>{
+      fetch(`${process.env.REACT_APP_BASE_URL}/logout`,{credentials:"include"}).then((data)=>{
+        console.log({data})
+      })
         window.sessionStorage.removeItem("token");
         navigate("../login",{replace:true})
 
     }
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{background:"darkslategray"}}>
         <Toolbar>
           <IconButton
             size="large"

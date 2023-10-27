@@ -33,8 +33,7 @@ export default function MediaCard() {
   };
   return (
     <>
-      <NavBar path="/payment" />
-      <div
+       <div
         style={{
           display: "flex",
           justifyContent: "center",
