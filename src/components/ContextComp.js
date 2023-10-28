@@ -10,7 +10,11 @@ export default function ContextComp({ children }) {
   console.log({ children });
   useEffect(()=>{
     fetch(`${process.env.REACT_APP_BASE_URL}/fetchUserDetails`,{
-      credentials:"include"
+      credentials:"include",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
     })
       .then((d) => {
         return d.json();
