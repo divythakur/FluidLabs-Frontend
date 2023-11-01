@@ -97,10 +97,10 @@ function Routes() {
    console.log({path})
   if (!context.userObj && path === "/") {
     console.log("I AM CKKKD")
-    window.location.href= "http://localhost:3000/signup"
+    window.location.href= "https://fluidlabfrontend-e1ae64993b8c.herokuapp.com/signup"
   }
   if (context.userObj && path === "/") {
-    window.location.href= "http://localhost:3000/onboarding"
+    window.location.href= "https://fluidlabfrontend-e1ae64993b8c.herokuapp.com/onboarding"
   }
 
   return (

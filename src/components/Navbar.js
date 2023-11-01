@@ -42,7 +42,7 @@ export default function NavBar({path = "/"}) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{textAlign:"start"}}>
           Hi.... {context.userObj.name}
           {  "      "}
-          <Link to="/onboarding" style={{color:"white",marginRight:"20px",fontSize:"16px"}}> <HomeIcon/></ Link>
+          <Link to="/onboarding" style={{color:"white",marginRight:"20px",fontSize:"16px"}}> <HomeIcon htmlColor="#a6bb2d" style={{marginBottom:"-7px",fontSize:"35px"}}/></ Link>
 
           </Typography>
           <div>
