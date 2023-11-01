@@ -212,7 +212,11 @@ const DoctorOnboarding = ({ setState, state }) => {
     console.log({result})
     if(result.body == "done")
     {
-        navigate("/specialization")
+      if(state.accounttype==="doctor")
+      {
+        navigate("/appointmentrequests")}else{
+          navigate("/myappointments")
+        }
     }
   };
 
@@ -255,8 +259,7 @@ const DoctorOnboarding = ({ setState, state }) => {
                   return { ...prev, specialization: e.target.value };
                 })
               }
-              // placeholder="Enter Zipcode"
-              //  helperText="Please select your specialization"
+             
             >
               {specializationList.map((option) => (
                 <MenuItem key={option.value} value={option.value}>

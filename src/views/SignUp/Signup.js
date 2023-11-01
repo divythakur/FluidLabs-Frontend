@@ -157,7 +157,7 @@ export default function DoctorDetailsForm() {
             </Avatar>
             <img src = "health.png" alt="logo.svg"  className={classes.logo}/>
             <Typography component="h1" variant="h5">
-              Sign Up
+              Login/Sign Up
             </Typography>
             <Box
               component="form"
@@ -165,7 +165,7 @@ export default function DoctorDetailsForm() {
               onSubmit={handleSubmit}
               sx={{ mt: 1 }}
             >
-               <Grid container spacing={2}>
+               {/* <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="given-name"
@@ -225,7 +225,7 @@ export default function DoctorDetailsForm() {
             disabled={Object.keys(error).length || userObj === null}
           >
             Sign Up
-          </Button>
+          </Button> */}
 
           <Button
             fullWidth
@@ -237,7 +237,7 @@ export default function DoctorDetailsForm() {
             onClick={() => handleSubmitGoogle("google")}
             // disabled={Object.keys(error).length || userObj === null}
           >
-            Sign Up with Google
+           Log In with Google
           </Button>
 
           <Button
@@ -249,7 +249,7 @@ export default function DoctorDetailsForm() {
             onClick={() => handleSubmitGoogle("github")}
             // disabled={Object.keys(error).length || userObj === null}
           >
-            Sign Up with Github
+            Log In with Github
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>

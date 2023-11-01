@@ -77,7 +77,7 @@ export default function ListOfDoctors() {
         }}
       >
         <Typography gutterBottom variant="h4">
-          Book Apppointment
+         Available Doctors
         </Typography>
 
         <div

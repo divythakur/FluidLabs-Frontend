@@ -6,8 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { TextField } from "@mui/material";
-import NavBar from "../../components/Navbar";
-
+ 
 export default function MediaCard() {
   const [qty, setQty] = React.useState(1);
 
@@ -43,10 +42,11 @@ export default function MediaCard() {
       >
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia
-            sx={{ height: 140 }}
-            image="../public/ice-cream-1544475_1280.png"
-            title="green iguana"
-          />
+            sx={{ height: "31vh" }}
+             title="green iguana"
+          >
+            <img  style={{height:"106%"}} src="buy.png"/>
+            </CardMedia>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               Buy

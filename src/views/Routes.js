@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React from "react";
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Routes as Switch, Route } from "react-router-dom";
+import { Routes as Switch, Route, useNavigate } from "react-router-dom";
 import SignUp from "./SignUp/Signup";
 import LoginPage from "./SignUp/LoginPage";
 import TableWrapper from "./List/TableWrapper";
@@ -16,6 +16,7 @@ import Onboarding from "./SignUp/Onboarding";
 import AppointmentRequest from "./doctor/AppointmentRequest";
 import ListOfDoctors from "./patient/ListOfDoctors";
 import MyAppointments from "./patient/MyAppoitments";
+import { UserContext } from "../components/ContextComp";
 
 const Paths = [
   {
@@ -25,7 +26,7 @@ const Paths = [
   },
   {
     path: "/login",
-    component: LoginPage,
+    component: SignUp,
     exact: true,
   },
   {
@@ -90,6 +91,18 @@ const Paths = [
 ];
 
 function Routes() {
+  const path = window.location.pathname;
+  const context = React.useContext(UserContext);
+
+   console.log({path})
+  if (!context.userObj && path === "/") {
+    console.log("I AM CKKKD")
+    window.location.href= "http://localhost:3000/signup"
+  }
+  if (context.userObj && path === "/") {
+    window.location.href= "http://localhost:3000/onboarding"
+  }
+
   return (
     <Switch>
       {Paths.map(({ path, component: Component, exact }) => {

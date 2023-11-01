@@ -2,8 +2,7 @@ import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { purple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../../components/Navbar";
-
+ 
 const primary = purple[500]; // #f44336
 
 const Error = () => {
@@ -11,8 +10,7 @@ const Error = () => {
 
   return (
     <>
-      <NavBar  path="failure"/>
-      <Box
+       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -32,7 +30,7 @@ const Error = () => {
         <Button
           variant="contained"
           onClick={() => {
-            navigate("../listitens", { replace: true });
+            navigate("../onboarding", { replace: true });
           }}
         >
           Back Home

@@ -51,7 +51,7 @@ export default function MyAppointments() {
 
           }}
         >
-          Book Appoitment
+          Book Appointment
         </Button>
 
         <div

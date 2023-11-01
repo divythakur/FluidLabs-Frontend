@@ -6,11 +6,15 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from './ContextComp';
+import HomeIcon from '@mui/icons-material/Home';
  
 export default function NavBar({path = "/"}) {
     const navigate = useNavigate()
- 
+    const context = React.useContext(UserContext)
+  
     const handleLogout=()=>{
+      context.setUserObj(null)
       fetch(`${process.env.REACT_APP_BASE_URL}/logout`,{credentials:"include"}).then((data)=>{
         console.log({data})
       })
@@ -18,6 +22,11 @@ export default function NavBar({path = "/"}) {
         navigate("../login",{replace:true})
 
     }
+
+  if(!context.userObj)
+  {
+    return null;
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{background:"darkslategray"}}>
@@ -31,11 +40,15 @@ export default function NavBar({path = "/"}) {
           >
            </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{textAlign:"start"}}>
-           Fluid Labs Assignment
+          Hi.... {context.userObj.name}
+          {  "      "}
+          <Link to="/onboarding" style={{color:"white",marginRight:"20px",fontSize:"16px"}}> <HomeIcon/></ Link>
+
           </Typography>
           <div>
+
+            
           {path==="/" && <Link to="/payment" style={{color:"white",marginRight:"20px",fontSize:"16px"}}> Payment Page</ Link>}
-          {path!=="/" && <Link to="/listitems"  style={{color:"white",marginRight:"20px",fontSize:"16px"}}> Home</ Link>}
 
           <Button color="inherit" onClick={handleLogout}>Logout</Button>
           </div>
