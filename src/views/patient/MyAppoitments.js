@@ -38,7 +38,7 @@ export default function MyAppointments() {
           alignItems: "center",
           flexDirection: "column",
           marginTop: "6%",
-        }}
+              }}
       >
         <Typography gutterBottom variant="h4">
           My Apppointments

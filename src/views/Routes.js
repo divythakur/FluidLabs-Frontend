@@ -94,25 +94,29 @@ function Routes() {
   const path = window.location.pathname;
   const context = React.useContext(UserContext);
 
-   console.log({path})
+  console.log({ path });
   if (!context.userObj && path === "/") {
-    console.log("I AM CKKKD")
-    window.location.href= "https://fluidlabfrontend-e1ae64993b8c.herokuapp.com/signup"
+    console.log("I AM CKKKD");
+    // window.location.href= "https://fluidlabfrontend-e1ae64993b8c.herokuapp.com/signup"
   }
   if (context.userObj && path === "/") {
-    window.location.href= "https://fluidlabfrontend-e1ae64993b8c.herokuapp.com/onboarding"
+    // window.location.href =
+    //   "https://fluidlabfrontend-e1ae64993b8c.herokuapp.com/onboarding";
   }
 
   return (
+
     <Switch>
       {Paths.map(({ path, component: Component, exact }) => {
         return (
-          <Route
-            exact={exact}
-            path={path}
-            element={<Component />}
-            key={`${path}`}
-          />
+        
+            <Route
+              exact={exact}
+              path={path}
+              element={<Component />}
+              key={`${path}`}
+            />
+         
         );
       })}
     </Switch>
