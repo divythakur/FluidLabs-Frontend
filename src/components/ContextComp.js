@@ -28,14 +28,14 @@ export default function ContextComp({ children }) {
         { 
           console.log("I AM HEREE")
            enqueueSnackbar("You are not authorized to view this page, or session timed out !!!")
-            window.location.href = "http://localhost:3000/signup"
+            window.location.href = `${process.env.REACT_APP_URL}/signup`
         }
         setUserObj( data );
 
         setLoading(false)
 
       }).catch((err)=>{
-         window.location.href = "http://localhost:3000/signup"
+         window.location.href = `${process.env.REACT_APP_URL}/signup`
         console.log({err})
 
         setLoading(false)

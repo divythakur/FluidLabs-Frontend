@@ -97,26 +97,23 @@ function Routes() {
   console.log({ path });
   if (!context.userObj && path === "/") {
     console.log("I AM CKKKD");
-    // window.location.href= "https://fluidlabfrontend-e1ae64993b8c.herokuapp.com/signup"
+    window.location.href = `${process.env.REACT_APP_URL}/signup`;
+   
   }
   if (context.userObj && path === "/") {
-    // window.location.href =
-    //   "https://fluidlabfrontend-e1ae64993b8c.herokuapp.com/onboarding";
+    window.location.href = `${process.env.REACT_APP_URL}/onboarding`;
   }
 
   return (
-
     <Switch>
       {Paths.map(({ path, component: Component, exact }) => {
         return (
-        
-            <Route
-              exact={exact}
-              path={path}
-              element={<Component />}
-              key={`${path}`}
-            />
-         
+          <Route
+            exact={exact}
+            path={path}
+            element={<Component />}
+            key={`${path}`}
+          />
         );
       })}
     </Switch>
