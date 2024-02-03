@@ -15,7 +15,7 @@ function App() {
         <ContextComp>
           <BrowserRouter>
             <SnackbarProvider />
-
+            
             <div style={{height:"100vh",backgroundImage:"url(doctorWallpaper.jpg)"}}>
            <ResponsiveAppBar/>
             <Routes />
